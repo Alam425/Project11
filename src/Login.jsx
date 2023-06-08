@@ -1,9 +1,20 @@
-// import React from 'react';
-
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "./AuthConte";
 
 const Login = () => {
-// const handleLogin
+const navigate = useNavigate();
+const {googleSignIn, user}  = useContext(AuthContext);
+const googleLogIn = () => {
+    googleSignIn();
+    if(user){
+        navigate('/', { replace: true });
+    }
+}
+const handleLogin = e => {
+    e.preventDefault();
+    // const form = e.target;
+}
     return (
         <div>
         <div className="hero min-h-screen bg-base-200">
@@ -11,9 +22,9 @@ const Login = () => {
                 <div className="card flex-shrink-0 w-full h-[500px] max-w-sm shadow-2xl bg-base-100 ">
                     <h6 className="py-5 text-6xl text-center text-slate-600 font-bold">Log In!</h6>
                     <div className="card-body">
-                    <button className="btn btn-info btn-outline bottom-0">LogIn via Google</button>
+                    <button onClick={googleLogIn} className="btn btn-info btn-outline bottom-0">LogIn via Google</button>
                     <span className="text-xl font-bold text-center text-slate-600">Or,</span>
-                        <form >
+                        <form onSubmit={handleLogin}>
                         <div className="form-control pb-5">
                             <label className="label">
                                 <span className="label-text">Email</span>

@@ -6,14 +6,14 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Login from './Login.jsx';
 import Error from './Error.jsx';
-import AuthConte from './AuthConte.jsx';
 import Blogx from './Blogx.jsx';
 import AllToy from './AllToy.jsx';
 import MyToy from './MyToy.jsx';
 import SignUp from './SignUp.jsx';
 import Home from './Home.jsx';
+import Login from './Login.jsx';
+import AuthConte from './AuthConte.jsx';
 
 const router = createBrowserRouter([
   {
