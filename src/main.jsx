@@ -14,6 +14,7 @@ import SignUp from './SignUp.jsx';
 import Home from './Home.jsx';
 import Login from './Login.jsx';
 import AuthConte from './AuthConte.jsx';
+import PrivateRoute from './PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
         element: <SignUp/>
       },{
         path: '/allToy',
-        element: <AllToy/>
+        element: <PrivateRoute><AllToy/></PrivateRoute>
       },{
         path: '/myToy',
         element: <MyToy/>

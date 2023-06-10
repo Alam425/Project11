@@ -4,50 +4,29 @@ import app from "../firebase.config.js";
 import Swal from "sweetalert2";
 
 
-export const AuthContext = createContext();
+export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
 
 const AuthConte = ({ children }) => {
-    const [user, setUser] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState(null);
     const googleProvider = new GoogleAuthProvider();
 
     const googleSignIn = () => {
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                setUser(result.user);
-                console.log(result.user);
-            }
-            )
-            .catch(r => console.log(r))
-    }
-
-    const emailSignUp = (name, photo, email, password) => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                user.displayName = name;
-                user.photoURL = photo;
-                setUser(user);
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage);
-            });
+        setLoading(true); 
+        return signInWithPopup(auth, googleProvider);
     }
 
     const emailLogin = (email, password) => {
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => { 
-                const user = userCredential.user;
-                setUser(user);
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage);
-            });
+        setLoading(true);
+        return  signInWithEmailAndPassword(auth, email, password);
+            
+    }
+
+    const emailSignUp = (name, photo, email, password) => {
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const logOut = () => {
@@ -59,13 +38,14 @@ const AuthConte = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+            setLoading(false);
         })
         return () => {
             return unsubscribe();
         }
     }, [])
 
-    const authInfo = { googleSignIn, logOut, user, emailSignUp, emailLogin };
+    const authInfo = { googleSignIn, logOut, user, emailSignUp, emailLogin, loading };
 
     return (
         <AuthContext.Provider value={authInfo}>

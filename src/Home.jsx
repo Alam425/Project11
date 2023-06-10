@@ -10,7 +10,7 @@ const Home = () => {
                 </div> */}
             </div>
             <div className="text-center my-32">
-                <p className="text-4xl font-bold text-slate-700">You are just at the right place</p>
+                <p className="text-4xl font-bold text-slate-600">You are just at the right place</p>
                 <p className="text-md font-semibold text-slate-400">The most desired Transformers toys collection for your kid is here...!</p>
                 <input type="search" className="p-3 w-80 mt-3 bg-base-content text-white rounded-3xl text-center" name="search" id="" placeholder="Search your desired transformer toy" />
             </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
     return (
         <div className="bg-base-200">
-            <footer className="footer pt-10 bg-base-200 text-base-content text-center h-36 justify-around">
+            <footer className="footer pt-10 text-base-content text-center h-36 justify-around">
                 <div className="text-xl flex gap-2 items-center">
                     <img width={'50px'} src="https://i.ibb.co/Tg60nZG/transformers-optimus-580x.webp" alt="download" border="0" className="rounded-xl" />
                     <p className="font-bold text-sky-500">ToyTransInc.</p>
@@ -51,9 +51,7 @@ const Footer = () => {
                     <p className="text-slate-600">Dhaka &nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; Mirpur&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; Mirpur-14</p>
                 </div>
             </footer>
-            <div className="">
-                <p className="text-slate-600 bg-base-200">copyright@2023     ||     Shamsul Alam ||     Assignment 11</p>
-            </div>
+                <p className="text-slate-600 hidden md:block bg-base-200">copyright@2023     ||     Shamsul Alam ||     Assignment 11</p>
         </div>
     );
 };
