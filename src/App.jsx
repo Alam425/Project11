@@ -6,7 +6,7 @@ import Footer from './Footer';
 function App() {
 
   return (
-    <div className='p-10 bg-base-200'>
+    <div className='p-10 bg-base-200' id='app'>
     <Navbar/>
     <Outlet/>
     <Footer/>

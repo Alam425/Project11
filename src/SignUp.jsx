@@ -1,13 +1,32 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "./AuthConte";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
+    const navigate = useNavigate();
+    const {emailSignUp, user} = useContext(AuthContext);
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const photo = form.photo.value;
+        const password = form.password.value;
+        emailSignUp(name, photo, email, password);
+        console.log(name, photo, email, password);
+        if(user) {
+            Swal.fire('Successfully Signed In as ', name) || alert('Successfully Signed In as ', name);
+            navigate('/', {replace: true});
+        }
+    }
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="card flex-shrink-0 w-full h-[520px] max-w-sm shadow-2xl bg-base-100 p-0 m-0">
                         <h6 className="text-6xl text-center font-bold p-0 m-0">Sign Up!</h6>
-                        <form>
+                        <form onSubmit={handleSignUp}>
                             <div className=" py-0 my-0 card-body">
                                 <div className="form-control py-0 my-0">
                                     <label className="label">
