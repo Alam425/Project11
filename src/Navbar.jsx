@@ -11,9 +11,23 @@ const Navbar = () => {
     const navItems = <>
         <Link to='/'><li className="font-semibold btn bg-white text-slate-500 lg:bg-base-200">Home</li></Link>
         <Link to='/allToy'><li className="font-semibold btn bg-white text-slate-500 lg:bg-base-200">All Toys</li></Link>
-        <Link to='/myToy'><li className="font-semibold btn bg-white text-slate-500 lg:bg-base-200">My Toy</li></Link>
+        <Link to='/myToy'><li className="font-semibold btn bg-white text-slate-500 lg:bg-base-200">My Toy</li></Link><br />
         <Link to='/addToy'><li className="font-semibold btn bg-white text-slate-500 lg:bg-base-200">Add Toy</li></Link>
         <Link to='/blog'><li className="font-semibold btn bg-white text-slate-500 lg:bg-base-200">Blog</li></Link>
+        {
+            user ?
+                <>
+                    <Link className="font-semibold text-slate-500 lg:flex lg:justify-between lg:items-center">
+                        <div className="tooltip" data-tip={user.displayName}>
+                            <img src={user.photoURL} className="w-12 h-12 p-0 rounded-lg" alt="" />
+                        </div>
+                        <div onClick={signoutt} className="btn btn-outline btn-info text-md font-semibold">LogOut</div>
+                    </Link>
+                </> :
+                <>
+                    <Link to='/login'><div className="btn-outline btn-info btn font-semibold text-slate-500">LogIn</div></Link>
+                </>
+        }
     </>;
     return (
         <div className="navbar bg-base-200 pt-3">
@@ -35,22 +49,6 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal px-1">
                     {navItems}
                 </ul>
-            </div>
-            <div className="navbar-end">
-            {
-            user ?
-                <>
-                    <div className="font-semibold text-slate-500 lg:flex lg:gap-2 lg:justify-between lg:items-center">
-                        <div className="tooltip" data-tip={user.displayName}>
-                            <img src={user.photoURL} className="w-12 h-12 p-0 rounded-lg" alt="" />
-                        </div>
-                        <div onClick={signoutt} className="btn btn-outline btn-info text-md font-semibold">LogOut</div>
-                    </div>
-                </> :
-                <>
-                    <Link to='/login'><div className="btn-outline btn-info btn font-semibold text-slate-500">LogIn</div></Link>
-                </>
-        }
             </div>
         </div>
     );

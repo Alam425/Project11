@@ -1,18 +1,57 @@
+import { useContext } from "react";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import 'react-tabs/style/react-tabs.css';
+import { AuthContext } from "./AuthConte";
+import CategoryCard from "./CategoryCard";
 
 const Home = () => {
+
+    const { toys } = useContext(AuthContext);
+    const male = toys.filter(male => male.sub_category === 'MALE');
+    const female = toys.filter(male => male.sub_category === 'FEMALE');
+
     return (
         <div>
-            <div className="rounded-2xl w-full h-[400px] my-auto overflow-auto bg-scroll bg-center" style={{ backgroundImage: `url("https://i.ibb.co/kBGV6bg/banner.jpg")`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
-                {/* <div className="md:w-1/3 ms-5 w-full h-[400px] ">
-                    <div className="py-10 text-slate-400 md:text-slate-600 text-left">
-                        <p className="mb-5 align-middle text-5xl font-bold">We can be heroes in our own lives. Every one of us. If we only have the courage to try.</p>
-                    </div>
-                </div> */}
+            <div className="rounded-2xl w-full h-[400px] bg-center" style={{ backgroundImage: `url("https://i.ibb.co/cYxNRz8/banner2.jpg")`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+                <div className="md:w-1/3 ps-5 w-full h-[400px] md:py-10 py-3 text-slate-500 text-left text-ellipsis">
+                    <p className="mb-5 align-middle text-center md:text-left text-3xl font-bold">We can be heroes in our own lives. Every one of us. If we only have the courage to try.</p>
+                </div>
             </div>
+            {/* https://i.ibb.co/kBGV6bg/banner.jpg
+                https://i.ibb.co/yXFB86k/banner.jpg
+            */}
             <div className="text-center my-32">
                 <p className="text-4xl font-bold text-slate-600">You are just at the right place</p>
-                <p className="text-md font-semibold text-slate-400">The most desired Transformers toys collection for your kid is here...!</p>
-                <input type="search" className="p-3 w-80 mt-3 bg-base-content text-white rounded-3xl text-center" name="search" id="" placeholder="Search your desired transformer toy" />
+                <p className="text-2xl p-3 font-semibold text-slate-400">The most desired Transformers toys collection for your kid is here...!</p>
+                <p className="text-xl font-semibold text-slate-500">Shop by category</p>
+                <div className="text-slate-600 p-3">
+                    <Tabs>
+                        <TabList>
+                            <Tab>All Transformers</Tab>
+                            <Tab>MALE Transformers</Tab>
+                            <Tab>FEMALE Transformers</Tab>
+                        </TabList>
+
+                        <TabPanel>
+                            <div className="grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 grid ">
+                                {toys.map(toy => <CategoryCard toy={toy} key={toy.serial} />)}
+                            </div>
+                        </TabPanel>
+
+                        <TabPanel>
+                            {/* {male.map(male => <MaleCategory male={male} key={male.serial} />)} */}
+                            <div className="grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 grid ">
+                                {male.map(toy => <CategoryCard toy={toy} key={toy.serial} />)}
+                            </div>
+                        </TabPanel>
+                        <TabPanel>
+                            {/* {female.map(female => <FemaleCategory female={female} key={female.serial} />)} */}
+                            <div className="grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 grid ">
+                                {female.map(toy => <CategoryCard toy={toy} key={toy.serial} />)}
+                            </div>
+                        </TabPanel>
+                    </Tabs>
+                </div>
             </div>
             <div className="hero max-h-max bg-base-200">
                 <div className="hero-content flex-col lg:flex-row">
@@ -22,7 +61,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="hero max-h-max bg-base-200">
+            <div className="hero max-h-max bg-base-200 py-10">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <img src="https://c4.wallpaperflare.com/wallpaper/677/206/523/transformers-transformers-the-last-knight-bumblebee-transformers-robot-wallpaper-preview.jpg" className="max-w-sm rounded-lg shadow-2xl" />
                     <div>

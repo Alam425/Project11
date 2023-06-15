@@ -10,14 +10,14 @@ const Footer = () => {
                 </div>
                 <div>
                     <span className="footer-title">Contact Me</span>
-                    <p className="text-slate-600">
+                    <div className="text-slate-600">
                         Phone :
                         <Link className="font-bold text-slate-400" to="tel:01234567890">
                             <div className="tooltip" data-tip="Phone Call">
                                 &nbsp; 01234567890
                             </div>
                         </Link>
-                    </p>
+                    </div>
                     <div className="flex justify-center items-center gap-2">
                         <div className="tooltip" data-tip="Facebook">
                             <Link to='https://web.facebook.com/' target="blank">

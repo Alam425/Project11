@@ -15,6 +15,8 @@ import Home from './Home.jsx';
 import Login from './Login.jsx';
 import AuthConte from './AuthConte.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
+import AddToy from './AddToy.jsx';
+import ToyDetails from './ToyDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,10 +34,18 @@ const router = createBrowserRouter([
         element: <SignUp/>
       },{
         path: '/allToy',
-        element: <PrivateRoute><AllToy/></PrivateRoute>
+        element: <AllToy/>
       },{
         path: '/myToy',
-        element: <MyToy/>
+        element: <PrivateRoute><MyToy/></PrivateRoute>,
+        loader: () => fetch('http://localhost:5500/toy')
+      },{
+        path: '/addToy',
+        element: <PrivateRoute><AddToy/></PrivateRoute>
+      },{
+        path: '/toy/:serial',
+        element: <PrivateRoute><ToyDetails/></PrivateRoute>,
+        // loader: ({params}) => fetch(`http://localhost:5000/toy/${params._id}`)
       },{
         path: '/blog',
         element: <Blogx/>

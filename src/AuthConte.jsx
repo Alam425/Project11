@@ -12,6 +12,8 @@ const AuthConte = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
     const googleProvider = new GoogleAuthProvider();
+    const [toys, setToy] = useState([]);
+
 
     const googleSignIn = () => {
         setLoading(true); 
@@ -45,7 +47,17 @@ const AuthConte = ({ children }) => {
         }
     }, [])
 
-    const authInfo = { googleSignIn, logOut, user, emailSignUp, emailLogin, loading };
+    
+    useEffect(() => {
+        fetch('api.json')
+            .then(res => res.json())
+            .then(data => {
+                setToy(data)
+            })
+    }, [])
+
+
+    const authInfo = { googleSignIn, logOut, user, emailSignUp, emailLogin, loading, toys };
 
     return (
         <AuthContext.Provider value={authInfo}>
