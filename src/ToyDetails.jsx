@@ -25,7 +25,7 @@ const ToyDetails = () => {
             return;
         }
 
-        fetch('http://localhost:5500/toy', {
+        fetch('https://assignment111-alam425.vercel.app/toy', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

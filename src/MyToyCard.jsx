@@ -17,7 +17,7 @@ const MyToyCard = ({ toy }) => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5500/toy/${_id}`, {
+                    fetch(`https://assignment111-alam425.vercel.app/toy/${_id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
