@@ -12,7 +12,7 @@ const ToyCard = ({ toy }) => {
         <div>
             <div className="card card-compact bg-slate-300 max-h-fit p-2">
                 <figure>
-                    <img className="w-52 h-52 rounded-xl" src={img} alt="Shoes" />
+                    <img className="w-52 h-52 rounded-xl" src={img} alt={name} />
                     </figure>
                 <div className="card-body text-slate-600">
                     <h2 className="card-title">{name}</h2>
