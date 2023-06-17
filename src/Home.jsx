@@ -1,14 +1,20 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
 import { AuthContext } from "./AuthConte";
 import CategoryCard from "./CategoryCard";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Home = () => {
 
     const { toys } = useContext(AuthContext);
     const male = toys.filter(male => male.sub_category === 'MALE');
     const female = toys.filter(male => male.sub_category === 'FEMALE');
+
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
     return (
         <div>
@@ -53,21 +59,25 @@ const Home = () => {
                     </Tabs>
                 </div>
             </div>
-            <div className="hero max-h-max bg-base-200">
-                <div className="hero-content flex-col lg:flex-row">
-                    <img src="https://c4.wallpaperflare.com/wallpaper/791/55/776/optimus-prime-4k-transformers-the-last-knight-wallpaper-preview.jpg" className="max-w-sm rounded-lg shadow-2xl" />
-                    <div>
-                        <h1 className="text-xl font-bold">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</h1>
+            <div className="App">
+                <header className="App-header">
+                    <div className="hero max-h-max bg-base-200" data-aos="fade-left">
+                        <div className="hero-content flex-col lg:flex-row">
+                            <img src="https://c4.wallpaperflare.com/wallpaper/791/55/776/optimus-prime-4k-transformers-the-last-knight-wallpaper-preview.jpg" className="max-w-sm rounded-lg shadow-2xl" />
+                            <div>
+                                <h1 className="text-xl font-bold">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</h1>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div className="hero max-h-max bg-base-200 py-10">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <img src="https://c4.wallpaperflare.com/wallpaper/677/206/523/transformers-transformers-the-last-knight-bumblebee-transformers-robot-wallpaper-preview.jpg" className="max-w-sm rounded-lg shadow-2xl" />
-                    <div>
-                        <h1 className="text-xl font-bold">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</h1>
+                    <div className="hero max-h-max bg-base-200 py-10" data-aos="fade-right">
+                        <div className="hero-content flex-col lg:flex-row-reverse">
+                            <img src="https://c4.wallpaperflare.com/wallpaper/677/206/523/transformers-transformers-the-last-knight-bumblebee-transformers-robot-wallpaper-preview.jpg" className="max-w-sm rounded-lg shadow-2xl" />
+                            <div>
+                                <h1 className="text-xl font-bold">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</h1>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </header>
             </div>
             <div className="carousel w-full rounded-xl">
                 <div id="slide1" className="carousel-item relative w-full">

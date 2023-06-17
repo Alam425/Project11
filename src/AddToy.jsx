@@ -10,13 +10,19 @@ const AddToy = () => {
         const form = e.target;
         const name = form.name.value;
         const img = form.img.value;
+        const rating = form.rating.value;
         const price = form.price.value;
         const quantity = form.quantity.value;
         const description = form.description.value;
-        const rating = form.rating.value;
         const category = form.category.value;
         const sellerName = form.sellerName.value;
         const sellerEmail = form.sellerEmail.value;
+
+        if(rating > 5){
+            Swal.fire("Rating can not be greater than 5");
+            return ;
+        }
+        
         const toy = { name, img, price, quantity, description, rating, category, sellerName, sellerEmail };
         console.log(toy);
         fetch('https://assignment1111.vercel.app/addToy', {
@@ -30,7 +36,8 @@ const AddToy = () => {
         .then(data => {
             console.log(data);
             if(data.insertedId){
-                Swal.fire('Toy Addition Successful')
+                Swal.fire('Toy Addition Successful');
+                window.location.reload(false);
             }
         })
         form.reset();

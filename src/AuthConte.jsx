@@ -10,12 +10,10 @@ const auth = getAuth(app);
 
 const AuthConte = ({ children }) => {
 
-
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
     const googleProvider = new GoogleAuthProvider();
     const [toys, setToy] = useState([]);
-    // const [customToys, setCustomToys] = useState([]);
 
 
     const googleSignIn = () => {
