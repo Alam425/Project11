@@ -19,29 +19,24 @@ const ToyDetails = () => {
 
     const addedToCart = (e) => {
         e.preventDefault();
-        const form = e.target;
-        const number = form.num.value;
-        if (number > quantity) {
-            Swal.fire('Order Quantity Can Not Be More Then Available Quantity Or, Less Than 1!!');
-            return;
-        }
-
-        fetch('https://assignment1111.vercel.app/toy', {
-            method: 'POST',
-            headers: {
-                'accept': 'application/json',
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(toy[0])
-        })
+        // fetch('https://localhost:5500/toy',
+         fetch('https://assignment1111.vercel.app/toy',
+            {
+                method: 'POST',
+                headers: {
+                    'accept': 'application/json',
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(toy[0])
+            })
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    Swal.fire('Added to cart')
+                    Swal.fire('Added to cart');
+                    navigate('/myToy', { replace: true });
                 }
             })
 
-        navigate('/myToy', { replace: true });
     }
 
     return (
@@ -56,7 +51,7 @@ const ToyDetails = () => {
                 <p className="text-lg font-semibold text-slate-600 text-left">Seller Email: {seller_email}</p>
                 <p className="text-lg font-semibold text-slate-600 text-left">Available Quantity: {quantity}</p>
                 <p className=" text-lg font-semibold text-slate-600 text-left">Price: <span className="text-purple-800 font-bold text-xl">{price}</span></p>
-                <div className="tooltip" data-tip={rating}>
+                <div className="tooltip text-left" data-tip={rating}>
                     <Rating
                         placeholderRating={rating}
                         emptySymbol={<img src="../img/retingEmpty.jpg" className="icon" />}
@@ -64,9 +59,7 @@ const ToyDetails = () => {
                         fullSymbol={<img src="../img/rating.png" className="icon" />} />
                 </div>
             </div>
-            <form onSubmit={addedToCart} className="text-lg font-semibold text-slate-600 text-left">
-                <input type="submit" className="btn w-full btn-outline btn-primary" value='Add to Cart' />
-            </form>
+            <input onClick={addedToCart} type="submit" className="text-lg font-semibold text-slate-600 text-left btn w-full btn-outline btn-primary" value='Add to Cart' />
             <div className="btn btn-info btn-outline w-full my-5" onClick={goBack}>
                 Go Back
             </div>

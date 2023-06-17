@@ -17,6 +17,7 @@ import AuthConte from './AuthConte.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
 import AddToy from './AddToy.jsx';
 import ToyDetails from './ToyDetails.jsx';
+import AddedToys from './AddedToys.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,16 +37,19 @@ const router = createBrowserRouter([
         path: '/allToy',
         element: <AllToy/>
       },{
+        path: '/addedToys',
+        element: <AddedToys/>
+      },{
         path: '/myToy',
         element: <PrivateRoute><MyToy/></PrivateRoute>,
+        // loader: () => fetch('https://http://localhost:5500/toy')
         loader: () => fetch('https://assignment1111.vercel.app/toy')
       },{
         path: '/addToy',
         element: <PrivateRoute><AddToy/></PrivateRoute>
       },{
         path: '/toy/:serial',
-        element: <PrivateRoute><ToyDetails/></PrivateRoute>,
-        // loader: ({params}) => fetch(`http://localhost:5000/toy/${params._id}`)
+        element: <PrivateRoute><ToyDetails/></PrivateRoute>
       },{
         path: '/blog',
         element: <Blogx/>

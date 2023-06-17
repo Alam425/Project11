@@ -1,3 +1,4 @@
+import Rating from "react-rating";
 import Swal from "sweetalert2";
 
 const MyToyCard = ({ toy }) => {
@@ -17,7 +18,9 @@ const MyToyCard = ({ toy }) => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`https://assignment1111.vercel.app/toy/${_id}`, {
+                    // fetch(`https://localhost:5500/toy/${_id}`,
+                    fetch(`https://assignment1111.vercel.app/toy/${_id}`,
+                     {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
@@ -30,6 +33,7 @@ const MyToyCard = ({ toy }) => {
                                     'success'
                                 )
                             }
+                            
                         })
                 }
             })
@@ -44,11 +48,17 @@ const MyToyCard = ({ toy }) => {
                     <img src={img} className="w-40 h-40 rounded-3xl p-3" alt="Movie" />
                 </figure>
                 <div className="card-body pt-2 pb-0">
-                    <h2 className="card-title">{name}</h2>
-                    <p> Seller : {seller_name > seller_email || "N/A"}  </p>
-                    <p> Category : {sub_category} </p>
-                    <p> Price : {price} </p>
-                    <p> Rating : {rating} </p>
+                    <h2 className="card-title text-3xl font-semibold text-slate-600 text-left">{name}</h2>
+                    <p className="text-lg font-semibold text-slate-600 text-left"> Seller : {seller_name > seller_email || "N/A"}  </p>
+                    <p className="text-lg font-semibold text-slate-600 text-left"> Category : {sub_category} </p>
+                <p className="text-lg font-semibold text-slate-600 text-left">Price: <span className="text-purple-800 font-bold text-xl">{price}</span></p>
+                    <div className="tooltip text-left" data-tip={rating}>
+                        <Rating
+                            placeholderRating={rating}
+                            emptySymbol={<img src="../img/retingEmpty.jpg" className="icon" />}
+                            placeholderSymbol={<img src="../img/rating.png" className="icon" />}
+                            fullSymbol={<img src="../img/rating.png" className="icon" />} />
+                    </div>
                     <div className="card-actions p-0 justify-end">
                         <button onClick={deleteToy} className="btn text-3xl">X</button>
                     </div>
