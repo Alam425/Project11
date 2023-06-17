@@ -37,8 +37,9 @@ const router = createBrowserRouter([
         path: '/allToy',
         element: <AllToy/>
       },{
-        path: '/addedToys',
-        element: <PrivateRoute><AddedToys/></PrivateRoute>
+        path: '/addedToy',
+        element: <PrivateRoute><AddedToys/></PrivateRoute>,
+        loader: () => fetch('https://assignment1111.vercel.app/addToy')
       },{
         path: '/myToy',
         element: <PrivateRoute><MyToy/></PrivateRoute>,

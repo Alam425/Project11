@@ -1,11 +1,11 @@
 import Rating from "react-rating";
 import Swal from "sweetalert2";
 
-const MyToyCard = ({ toy }) => {
+const AddedToyCard = ({ toy }) => {
 
-    const { name, img, price, rating, seller_name, seller_email, sub_category, _id } = toy;
+    const { name, img, price, rating, sellerName, sellerEmail, category, quantity, _id, description } = toy;
 
-    const deleteToy = () => {
+    const deleteT = () => {
 
         Swal.fire({
             title: 'Are you sure?',
@@ -19,10 +19,10 @@ const MyToyCard = ({ toy }) => {
             .then((result) => {
                 if (result.isConfirmed) {
                     // fetch(`https://localhost:5500/toy/${_id}`,
-                    fetch(`https://assignment1111.vercel.app/toy/${_id}`,
-                     {
-                        method: 'DELETE'
-                    })
+                    fetch(`https://assignment1111.vercel.app/addToy/${_id}`,
+                        {
+                            method: 'DELETE'
+                        })
                         .then(res => res.json())
                         .then(data => {
                             console.log(data);
@@ -33,7 +33,7 @@ const MyToyCard = ({ toy }) => {
                                     'success'
                                 )
                             }
-                            
+
                         })
                 }
             })
@@ -49,9 +49,12 @@ const MyToyCard = ({ toy }) => {
                 </figure>
                 <div className="card-body pt-2 pb-0">
                     <h2 className="card-title text-3xl font-semibold text-slate-600 text-left">{name}</h2>
-                    <p className="text-lg font-semibold text-slate-600 text-left"> Seller : {seller_name > seller_email}  </p>
-                    <p className="text-lg font-semibold text-slate-600 text-left"> Category : {sub_category} </p>
-                <p className="text-lg font-semibold text-slate-600 text-left">Price: <span className="text-purple-800 font-bold text-xl">{price}</span></p>
+                    <p className="text-lg font-semibold text-slate-600 text-left"> Description : {description}  </p>
+                    <p className="text-lg font-semibold text-slate-600 text-left"> Seller : {sellerName}  </p>
+                    <p className="text-lg font-semibold text-slate-600 text-left"> Seller Email : {sellerEmail}  </p>
+                    <p className="text-lg font-semibold text-slate-600 text-left"> Category : {category} </p>
+                    <p className="text-lg font-semibold text-slate-600 text-left"> Available Quantity : {quantity} </p>
+                    <p className="text-lg font-semibold text-slate-600 text-left">Price: <span className="text-purple-800 font-bold text-xl">$ {price}</span></p>
                     <div className="tooltip text-left" data-tip={rating}>
                         <Rating
                             placeholderRating={rating}
@@ -60,7 +63,7 @@ const MyToyCard = ({ toy }) => {
                             fullSymbol={<img src="../img/rating.png" className="icon" />} />
                     </div>
                     <div className="card-actions p-0 justify-end">
-                        <button onClick={deleteToy} className="btn text-3xl">X</button>
+                        <button onClick={deleteT} className="btn text-3xl">X</button>
                     </div>
                 </div>
             </div>
@@ -68,4 +71,4 @@ const MyToyCard = ({ toy }) => {
     );
 };
 
-export default MyToyCard;
+export default AddedToyCard;

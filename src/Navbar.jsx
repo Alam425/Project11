@@ -12,7 +12,7 @@ const Navbar = () => {
         <Link to='/'><li className="font-semibold btn bg-white text-slate-500 lg:bg-base-200">Home</li></Link>
         <Link to='/allToy'><li className="font-semibold btn bg-white text-slate-500 lg:bg-base-200">All Toys</li></Link>
         <Link to='/addToy'><li className="font-semibold btn bg-white text-slate-500 lg:bg-base-200">Add a Toy</li></Link>
-        <Link to='/addedToys'><li className="font-semibold btn bg-white text-slate-500 lg:bg-base-200">My Added Toys</li></Link><br />
+        <Link to='/addedToy'><li className="font-semibold btn bg-white text-slate-500 lg:bg-base-200">My Added Toys</li></Link><br />
         <Link to='/myToy'><li className="font-semibold btn bg-white text-slate-500 lg:bg-base-200">Cart</li></Link>
         <Link to='/blog'><li className="font-semibold btn bg-white text-slate-500 lg:bg-base-200">Blog</li></Link>
         {
