@@ -32,6 +32,7 @@ const MyToyCard = ({ toy }) => {
                                     'Your file has been deleted.',
                                     'success'
                                 )
+                                window.location.reload(false);
                             }
                             
                         })
