@@ -33,7 +33,7 @@ const Update = () => {
         .then(res => res.json())
         .then(data => { 
             console.log(data); 
-            if(data.modifiedCount > 1){
+            if(data.modifiedCount > 0){
                 navigate('/addedToy', {replace : true });
                 Swal.fire({
                     title: 'Success!',
