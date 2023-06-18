@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthConte";
 import Swal from "sweetalert2";
 
 const Login = () => {
+
+    const [show, setShow] = useState(false);
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
     const navigate = useNavigate();
@@ -60,7 +62,12 @@ const Login = () => {
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password" name="password" placeholder="password" className="input input-bordered" />
+                                    <input type={show ? "text" : "password"} name="password" placeholder="password" className="input input-bordered"/>
+                                    <p className="text-sm border-2" onClick={()=>setShow(!show)}>
+                                    {
+                                        show ? <span>Hide Password</span> : <span>Show Password</span>
+                                    }    
+                                    </p>
                                     <label className="label">
                                         <div className="text-md">
                                             New here?

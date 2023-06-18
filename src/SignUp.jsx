@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthConte";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
 
+    const [show, setShow] = useState(false);
     const navigate = useNavigate();
     const { emailSignUp } = useContext(AuthContext);
 
@@ -48,7 +49,12 @@ const SignUp = () => {
                                     <input type="text" placeholder="Your Image-URL" name="photo" className="input input-bordered" />
                                 </div>
                                 <div className="form-control py-0 my-0">
-                                    <input type="password" name="password" placeholder="Password" required className="input input-bordered" />
+                                    <input type={show ? "text" : "password"} name="password" placeholder="Password" required className="input input-bordered" />
+                                    <p className="border-2 text-sm" onClick={()=>setShow(!show)}>
+                                    {
+                                        show ? <span>Hide Password</span> : <span>Show Password</span>
+                                    }    
+                                    </p>
                                 </div>
                                 <div>
                                     <label className="label">

@@ -21,7 +21,7 @@ const Update = () => {
     const ategory = form.category.value;
     const ellerName = form.sellerName.value;
     const ellerEmail = form.sellerEmail.value;
-    const updatedToy = {ame, mg, ating, rice, uantity, escription, ategory, ellerName, ellerEmail}
+    const updatedToy = {ame, mg, ating, rice, uantity, escription, ategory, ellerName, ellerEmail};
 
     fetch(`https://assignment1111.vercel.app/addToy/${_id}`, {
         method: 'PUT',
@@ -33,7 +33,7 @@ const Update = () => {
         .then(res => res.json())
         .then(data => { 
             console.log(data); 
-            if(data.modifiedCount > 0){
+            if(data.modifiedCount > 1){
                 navigate('/addedToy', {replace : true });
                 Swal.fire({
                     title: 'Success!',
