@@ -50,7 +50,7 @@ const AuthConte = ({ children }) => {
     }, [])
     
     useEffect(() => {
-        fetch('api.json')
+        fetch('https://assignment1111.vercel.app/allToy')
             .then(res => res.json())
             .then(data => {
                 setToy(data)
