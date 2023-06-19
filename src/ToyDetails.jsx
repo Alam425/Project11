@@ -54,9 +54,9 @@ const ToyDetails = () => {
                 <div className="tooltip text-left" data-tip={rating}>
                     <Rating
                         placeholderRating={rating}
-                        emptySymbol={<img src="../img/retingEmpty.jpg" className="icon" />}
-                        placeholderSymbol={<img src="../img/rating.png" className="icon" />}
-                        fullSymbol={<img src="../img/rating.png" className="icon" />} />
+                        emptySymbol={<img src="https://i.ibb.co/mtG72w9/reting-Empty.jpg" className="icon" />}
+                        placeholderSymbol={<img src="https://i.ibb.co/gmVjCwc/rating.png" className="icon" />}
+                        fullSymbol={<img src="https://i.ibb.co/gmVjCwc/rating.png" className="icon" />} />
                 </div>
             </div>
             <input onClick={addedToCart} type="submit" className="text-lg font-semibold text-slate-600 text-left btn w-full btn-outline btn-primary" value='Add to Cart' />

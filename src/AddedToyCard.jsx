@@ -63,9 +63,9 @@ const AddedToyCard = ({ toy }) => {
                     <div className="tooltip text-left" data-tip={rating}>
                         <Rating
                             placeholderRating={rating}
-                            emptySymbol={<img src="../img/retingEmpty.jpg" className="icon" />}
-                            placeholderSymbol={<img src="../img/rating.png" className="icon" />}
-                            fullSymbol={<img src="../img/rating.png" className="icon" />} />
+                            emptySymbol={<img src="https://i.ibb.co/mtG72w9/reting-Empty.jpg" className="icon" />}
+                            placeholderSymbol={<img src="https://i.ibb.co/gmVjCwc/rating.png" className="icon" />}
+                            fullSymbol={<img src="https://i.ibb.co/gmVjCwc/rating.png" className="icon" />} />
                     </div>
                     <div className="card-actions p-0 justify-end">
                         <Link to='/update'>

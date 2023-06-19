@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <div className="bg-base-200">
+        <div className="bg-base-200 pb-40 sm:pb-0">
             <footer className="footer pt-10 text-base-content text-center h-36 justify-around">
                 <div className="text-xl flex gap-2 items-center">
                     <img width={'50px'} src="https://i.ibb.co/Tg60nZG/transformers-optimus-580x.webp" alt="download" border="0" className="rounded-xl" />
